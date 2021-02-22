@@ -1,0 +1,27 @@
+## Caveats
+
+Docroot is: /usr/local/var/www
+
+The default port has been set in /usr/local/etc/nginx/nginx.conf to 8080 so that
+nginx can run without sudo.
+
+nginx will load all files in /usr/local/etc/nginx/servers/.
+
+### Stop Nginx and Start
+
+```sh
+nginx -s stop
+nginx
+```
+
+OR
+
+```sh
+nginx -s reload
+```
+
+### Symlink nginx from directory
+
+```sh
+ln -s /path/to/original/nginx.conf /usr/local/etc/nginx/nginx.conf
+```
