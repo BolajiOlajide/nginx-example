@@ -25,3 +25,32 @@ nginx -s reload
 ```sh
 ln -s /path/to/original/nginx.conf /usr/local/etc/nginx/nginx.conf
 ```
+
+### Pull sample docker image with node app running
+
+```sh
+docker pull cooproton12/nodeapp:latest
+```
+
+### Spin up 4 different node apps to be load balanced
+* docker run -p 2222:9999 -e APPID=2222 -d cooproton12/nodeapp:latest
+* docker run -p 3333:9999 -e APPID=3333 -d cooproton12/nodeapp:latest
+* docker run -p 4444:9999 -e APPID=4444 -d cooproton12/nodeapp:latest
+* docker run -p 5555:9999 -e APPID=5555 -d cooproton12/nodeapp:latest
+
+### Setup Let's Encrypt
+
+* Install letsencrypt
+
+```sh
+# on a mac
+brew install letsencrypt
+```
+
+* Generate certificate
+
+```sh
+sudo certbot certonly --standalone
+```
+
+Sample public key path is gonna look like `/etc/letsencrypt/live/nginxtest.ddns.net/fullchain.pem`
